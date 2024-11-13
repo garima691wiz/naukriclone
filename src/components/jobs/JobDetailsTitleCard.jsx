@@ -1,20 +1,19 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
 import { CiCalendarDate, CiLocationOn } from "react-icons/ci";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function JobDetailsTitleCard({ curJob = {} }) {
-  const [loggedIn] = useState(false);
+  const loggedIn = useSelector((state) => state.user.isLoggedIn);
 
   const {
-    job_id,
+    // job_id,
     job_title,
     employer_name,
     job_posted_at_datetime_utc,
     job_city,
     job_state,
     job_country,
-    // job_description,
     job_is_remote,
   } = curJob || {};
 

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useSelector } from "react-redux";
 
 const sampleData = {
   fullName: "User",
@@ -8,7 +9,9 @@ const sampleData = {
   city: "Bangalore",
 };
 
-function ProfileCard({ userData = sampleData }) {
+function ProfileCard() {
+  const user = useSelector((state) => state.user);
+  console.log(user);
   return (
     <div className="flex w-[300px] max-w-[350px] flex-col items-center gap-6 rounded-3xl border bg-white p-4 py-6 shadow-md">
       <LazyLoadImage
@@ -20,10 +23,10 @@ function ProfileCard({ userData = sampleData }) {
       />
 
       <div className="flex flex-col items-center space-y-2">
-        <h2 className="text-xl font-bold">{userData.fullName}</h2>
-        <p className="text-sm font-semibold text-gray-700">{userData.email}</p>
-        <p className="text-sm font-semibold text-gray-700">{userData.mobile}</p>
-        <p className="text-sm font-semibold text-gray-700">{userData.city}</p>
+        <h2 className="text-xl font-bold">{user?.fullName}</h2>
+        <p className="text-sm font-semibold text-gray-700">{user?.email}</p>
+        <p className="text-sm font-semibold text-gray-700">{user?.mobile}</p>
+        <p className="text-sm font-semibold text-gray-700">{user?.city}</p>
       </div>
     </div>
   );

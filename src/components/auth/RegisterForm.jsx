@@ -1,15 +1,59 @@
 import { useForm } from "react-hook-form";
 import { IoMdStar } from "react-icons/io";
+import auth, { db } from "../../firebase/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+// import { useDispatch } from "react-redux";
+// import { setUser } from "../../features/user/userSlice";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useState } from "react";
 
 function RegisterForm() {
+  // const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [isRegistering, setIsRegistering] = useState(false);
+
+  // hook for form management
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  // create the user and register the data in db
+  const onSubmit = async (formData) => {
+    const { fullName, email, password, mobile, city } = formData;
+
+    try {
+      // try creating new user
+      setIsRegistering(true);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
+
+      const user = userCredential.user;
+
+      // if user was created then store their data also redict and show success message
+      if (user) {
+        await setDoc(doc(db, "users", user.uid), {
+          fullName,
+          email,
+          mobile,
+          city,
+        });
+
+        toast.success("Registered successfully");
+        navigate("/");
+      }
+    } catch (error) {
+      toast.error(error.message.split("/")[1]);
+      console.log(error);
+    } finally {
+      setIsRegistering(false);
+    }
   };
 
   return (
@@ -18,7 +62,7 @@ function RegisterForm() {
       <div>
         <h2 className="text-2xl font-semibold">Create your Naukari profile</h2>
         <p className="font-semibold text-stone-400">
-          Search & apply to jobs from India's No.1 Job Site
+          Search & apply to jobs fromIndia&#39;s No.1 Job Site
         </p>
       </div>
 
@@ -132,9 +176,10 @@ function RegisterForm() {
         {/* Submit Button */}
         <button
           type="submit"
-          className="mt-6 w-32 rounded-full bg-blue-600 p-2 font-semibold text-white hover:bg-blue-700"
+          disabled={isRegistering}
+          className={`mt-6 w-32 rounded-full bg-blue-600 p-2 font-semibold text-white hover:bg-blue-700 ${isRegistering && "cursor-not-allowed opacity-60"}`}
         >
-          Register
+          {isRegistering ? "Registering..." : "Register"}
         </button>
       </form>
     </div>

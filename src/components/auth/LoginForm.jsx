@@ -1,15 +1,49 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import { IoMdStar } from "react-icons/io";
+import auth from "../../firebase/firebase";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+// import { useDispatch } from "react-redux";
+// import { setUser } from "../../features/user/userSlice";
 
 function LoginForm() {
+  const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  // hook for form handling
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  // function to interact with firebase
+  const onSubmit = async (formData) => {
+    const { email, password } = formData;
+
+    try {
+      setIsLoggingIn(true);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
+      const user = userCredential?.user;
+
+      if (user) {
+        toast.success("Logged in successfully!");
+        // dispatch(setUser({ email, isLoggedIn: true, id: user.uid }));
+        navigate("/");
+      }
+    } catch (error) {
+      toast.error(error.message.split("/")[1]);
+      console.log(error);
+    } finally {
+      setIsLoggingIn(false);
+    }
   };
 
   return (
@@ -67,9 +101,10 @@ function LoginForm() {
         {/* Submit Button */}
         <button
           type="submit"
-          className="mt-6 w-32 rounded-full bg-blue-600 p-2 font-semibold text-white hover:bg-blue-700"
+          disabled={isLoggingIn}
+          className={`mt-6 w-32 rounded-full bg-blue-600 p-2 font-semibold text-white hover:bg-blue-700 ${isLoggingIn && "cursor-not-allowed opacity-60"}`}
         >
-          Login
+          {isLoggingIn ? "Processing..." : "Login"}
         </button>
       </form>
     </div>
