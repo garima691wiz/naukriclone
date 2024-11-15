@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toggleSavedJob } from "../../features/savedjobs/savedJobsSlice";
 import { applyJob } from "../../features/appliedJobs/appliedJobsSlice";
 
-function JobDetailsTitleCard({ curJob = {} }) {
+function JobDetailsHeaderCard({ curJob = {} }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const loggedIn = useSelector((state) => state.user.isLoggedIn);
@@ -108,4 +108,4 @@ function JobDetailsTitleCard({ curJob = {} }) {
   );
 }
 
-export default JobDetailsTitleCard;
+export default JobDetailsHeaderCard;
