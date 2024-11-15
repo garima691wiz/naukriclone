@@ -1,5 +1,5 @@
 import ProfileCard from "../components/profile/ProfileCard";
-import UserJobs from "../components/profile/userJobs";
+import UserJobs from "../components/profile/UserJobs";
 
 function ProfilePage() {
   return (
