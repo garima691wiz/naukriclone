@@ -12,7 +12,10 @@ function JobDetailsTitleCard({ curJob = {} }) {
 
   // SAVING JOB FUNCTIONALITY
   const savedJobs = useSelector((state) => state.savedJobs.savedJobs || []);
-  const isSaved = savedJobs.some((job) => job.job_id === curJob.job_id);
+  const isSaved = savedJobs.some(
+    (job) =>
+      job.title === curJob.title && job.companyName === curJob.companyName,
+  );
 
   const handleToggleSaveJob = function () {
     if (!loggedIn) {
@@ -25,7 +28,10 @@ function JobDetailsTitleCard({ curJob = {} }) {
 
   // APPLYING JOBS FUNCTIONSLITY
   const appliedJobs = useSelector((state) => state.appliedJobs.appliedJobs);
-  const isApplied = appliedJobs.some((job) => job.job_id === curJob.job_id);
+  const isApplied = appliedJobs.some(
+    (job) =>
+      job.title === curJob.title && job.companyName === curJob.companyName,
+  );
 
   function handleApply() {
     if (!loggedIn) {
@@ -36,25 +42,17 @@ function JobDetailsTitleCard({ curJob = {} }) {
     dispatch(applyJob(curJob));
   }
 
-  const {
-    // job_id,
-    job_title,
-    employer_name,
-    job_posted_at_datetime_utc,
-    job_city,
-    job_state,
-    job_country,
-    job_is_remote,
-  } = curJob || {};
+  const { title, companyName, formattedLocation, workplaceTypes, listedAt } =
+    curJob || {};
 
-  const postedDate = new Date(job_posted_at_datetime_utc).toLocaleDateString();
+  const postedDate = new Date(listedAt).toLocaleDateString();
   return (
     <div className="mx-auto max-w-2xl rounded-lg border bg-white p-4 shadow-lg transition-shadow duration-300 ease-in-out hover:shadow-xl">
       <div className="flex flex-col space-y-3">
         <div>
           {/* Title and Save Button */}
           <div className="flex items-start justify-between">
-            <h2 className="text-lg font-semibold text-gray-800">{job_title}</h2>
+            <h2 className="text-lg font-semibold text-gray-800">{title}</h2>
 
             <div className="flex items-center">
               <CiCalendarDate className="mr-1 text-lg" />
@@ -64,7 +62,7 @@ function JobDetailsTitleCard({ curJob = {} }) {
 
           {/* Employer Name */}
 
-          <p className="text-sm font-semibold">{employer_name}</p>
+          <p className="text-sm font-semibold">{companyName}</p>
         </div>
 
         {/* Details Section */}
@@ -72,9 +70,9 @@ function JobDetailsTitleCard({ curJob = {} }) {
           <div className="flex items-center">
             <CiLocationOn className="mr-1 text-lg" />
             <span>
-              {job_is_remote
+              {workplaceTypes && workplaceTypes.includes("Remote")
                 ? "Remote"
-                : `${job_city}, ${job_state}, ${job_country}`}
+                : formattedLocation}
             </span>
           </div>
         </div>

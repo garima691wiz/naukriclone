@@ -51,18 +51,14 @@ const Navbar = () => {
             <Link to="/Jobs" className="text-gray-700 hover:text-blue-600">
               Jobs
             </Link>
-            <Link to="#" className="text-gray-700 hover:text-blue-600">
-              Companies
-            </Link>
+
             <Link
               to="naukariServices"
               className="text-gray-700 hover:text-blue-600"
             >
               Services
             </Link>
-            <Link to="#" className="text-gray-700 hover:text-blue-600">
-              For employers
-            </Link>
+
             {!isloggedIn ? (
               <>
                 <Link

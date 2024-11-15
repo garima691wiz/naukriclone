@@ -25,7 +25,9 @@ const appliedjobSlce = createSlice({
     applyJob: function (state, action) {
       const job = action.payload;
       const existingJob = state.appliedJobs.find(
-        (applied) => applied.job_id === job.job_id,
+        (applied) =>
+          applied.title === job.title &&
+          applied.companyName === job.companyName,
       );
 
       if (!existingJob) {
@@ -34,12 +36,12 @@ const appliedjobSlce = createSlice({
       }
     },
 
-    clearAPpliedJobs: function (state) {
+    clearAppliedJobs: function (state) {
       state.appliedJobs = [];
       saveToLocalStorage(state);
     },
   },
 });
 
-export const { applyJob, clearAPpliedJobs } = appliedjobSlce.actions;
+export const { applyJob, clearAppliedJobs } = appliedjobSlce.actions;
 export default appliedjobSlce.reducer;

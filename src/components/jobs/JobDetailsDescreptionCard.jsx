@@ -2,10 +2,10 @@
 // import { Link } from "react-router-dom";
 
 function JobDetailsDescreptionCard({ curJob = {} }) {
-  const { job_description } = curJob || {};
+  const { jobDescription } = curJob || {};
 
-  const points = job_description
-    ?.split(/[•●◦▪▸]+/)
+  const points = jobDescription
+    ?.split(/\.\s+/)
     .map((point) => point.trim())
     .filter(Boolean);
 

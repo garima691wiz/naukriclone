@@ -45,8 +45,8 @@ function UserJobs() {
             </p>
           </div>
         ) : (
-          curJobs.map((jobData) => (
-            <JobCard key={jobData.id || jobData.title} jobData={jobData} />
+          curJobs.map((jobData, index) => (
+            <JobCard key={index} jobData={jobData} />
           ))
         )}
       </div>

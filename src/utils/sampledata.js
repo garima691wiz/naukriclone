@@ -253,4 +253,95 @@ const samplejobsData = {
   ],
 };
 
-export { samplejobsData };
+const linkedSampleData = [
+  {
+    title: "Software Security Engineer II - CTJ - TS/SCI",
+    companyURLs: [
+      "https://www.linkedin.com/company/1035",
+      "https://www.linkedin.com/company/microsoft",
+    ],
+    companyId: "1035",
+    companyUniversalName: "microsoft",
+    companyName: "Microsoft",
+    salaryInsights: "",
+    applicants: "",
+    formattedLocation: "Reston, VA",
+    formattedEmploymentStatus: "Full-time",
+    formattedExperienceLevel: "",
+    formattedIndustries: "Software Development",
+    jobDescription:
+      "Security represents the most critical priorities for our customers in a world awash in digital threats, regulatory scrutiny, and estate complexity. Microsoft Security aspires to make the world a safer place for all. We want to reshape security and empower every user, customer, and developer with a security cloud that protects them with end to end, simplified solutions. The Microsoft Security organization accelerates Microsoft’s mission and bold ambitions to ensure that our company and industry is securing digital technology platforms, devices, and clouds in our customers’ heterogeneous environments, as well as ensuring the security of our own internal estate. Our culture is centered on embracing a growth mindset, a theme of inspiring excellence, and encouraging teams and leaders to bring their best each day. In doing so, we create life-changing innovations that impact billions of lives around the world. Microsoft Sovereign Cloud Security is looking for highly motivated candidates that can thrive in a non-traditional, agile environment at the cutting-edge of the security market. Our group is responsible for providing organizations with the best security solution for their cloud environment, allowing for visibility, governance, and protection over their infrastructure, platforms, and application solutions. We are looking for a hands-on engineer to join a fast-paced team solving complex security and systems focused problems in the sovereign cloud security space. You will work closely with a distributed engineering team, product management, customer experience, and customers in addition to the central Azure organization leveraging the best platforms that Microsoft has to offer. The Software Security Engineer II will play a key role driving efforts to improve security in the sovereign cloud environment. This includes working with teams throughout the organization to identify and address security vulnerabilities and compliance issues and to educate users about security best practices. The SSE will leverage their software development experience to design and implement solutions to security challenges in the Azure environment. Microsoft’s mission is to empower every person and every organization on the planet to achieve more. As employees we come together with a growth mindset, innovate to empower others, and collaborate to realize our shared goals. Each day we build on our values of respect, integrity, and accountability to create a culture of inclusion where everyone can thrive at work and beyond. In alignment with our Microsoft values, we are committed to cultivating an inclusive work environment for all employees to positively impact our culture every day. Responsibilities Develop tools and techniques to scale and accelerate offensive security emulation, vulnerability discovery, and security offerings. Leverage a broad and current understanding of security to devise and develop new protections.Work with offensive security engineers to understand security findings, automate detection techniques, and develop tools and strategies for remediation.Design, build, and maintain Azure services that support the team’s security mission.Conduct ad hoc and prescriptive threat modeling and security reviews to identify vulnerabilities and weaknesses in the architecture of applications and services.Work with and assist other team members, external test teams, and pen testers at Microsoft in offensive techniques and approaches to assess our environments.Help to monitor and track organizational progress against security benchmarks and compliance efforts.Work as part of an on-call rotation and contribute to multiple projects/demands simultaneously. Qualifications Required qualifications: Bachelor's Degree in Computer Science, or related technical discipline AND 2+ years technical engineering experience with coding in languages including, but not limited to, C, C++, C#, Java, JavaScript, or PythonOR equivalent experience.Experience with Cyber Security and/or a Cloud environment. Other Requirements Security Clearance Requirements: Candidates must be able to meet Microsoft, customer and/or government security screening requirements are required for this role. These requirements include, but are not limited to the following specialized security screenings:The successful candidate must have an active U.S. Government Top Secret/SCI Security Clearance. Ability to meet Microsoft, customer and/or government security screening requirements are required for this role. Failure to maintain or obtain the appropriate clearance and/or customer screening requirements may result in employment action up to and including termination.Clearance Verification: This position requires successful verification of the stated security clearance to meet federal government customer requirements. You will be asked to provide clearance verification information prior to an offer of employment.Microsoft Cloud Background Check: This position will be required to pass the Microsoft Cloud background check upon hire/transfer and every two years thereafter. Citizenship & Citizenship Verification: This position requires verification of U.S. citizenship due to citizenship-based legal restrictions. Specifically, this position supports United States federal, state, and/or local United States government agency customer and is subject to certain citizenship-based restrictions where required or permitted by applicable law. To meet this legal requirement, citizenship will be verified via a valid passport, or other approved documents, or verified US government Clearance Preferred Qualifications Bachelor's Degree in Computer ScienceOR related technical field AND 4+ years technical engineering experience with coding in languages including, but not limited to, C, C++, C#, Java, JavaScript,OR PythonOR Master's Degree in Computer Science or related technical field AND 2+ years technical engineering experience with coding in languages including, but not limited to, C, C++, C#, Java, JavaScript, or PythonOR equivalent experience. Software Engineering IC3 - The typical base pay range for this role across the U.S. is USD $98,300 - $193,200 per year. There is a different range applicable to specific work locations, within the San Francisco Bay area and New York City metropolitan area, and the base pay range for this role in those locations is USD $127,200 - $208,800 per year. Certain roles may be eligible for benefits and other compensation. Find additional benefits and pay information here: https://careers.microsoft.com/us/en/us-corporate-pay Microsoft will accept applications for the role until November 17, 2024 #softwareengineering, #devops, #pentester, #penetrationtester, #offensivesecurity, #securityengineering, #purpleteam, #SCS, #SDL Microsoft is an equal opportunity employer. Consistent with applicable law, all qualified applicants will receive consideration for employment without regard to age, ancestry, citizenship, color, family or medical care leave, gender identity or expression, genetic information, immigration status, marital status, medical condition, national origin, physical or mental disability, political affiliation, protected veteran or military status, race, ethnicity, religion, sex (including pregnancy), sexual orientation, or any other characteristic protected by applicable local laws, regulations and ordinances. If you need assistance and/or a reasonable accommodation due to a disability during the application process, read more about requesting accommodations.",
+    inferredBenefits: "",
+    jobFunctions: "IT",
+    workplaceTypes: [],
+    companyData: {
+      companyApplyUrl:
+        "https://careers.microsoft.com/us/en/job/1779480/Software-Security-Engineer-II-CTJ-TS-SCI?jobsource=linkedin&utm_source=Job%20Board&utm_campaign=linkedin-feed",
+      jobPostingUrl:
+        "https://www.linkedin.com/jobs/view/4077332834/?trk=jobs_biz_prem_srch",
+      listedAt: "2024-11-15T08:29:12.000Z",
+    },
+  },
+  {
+    title: "Software Developer Internship",
+    companyURL1: "https://www.linkedin.com/company/5240076",
+    companyURL2: "https://www.linkedin.com/company/mygwork",
+    companyId: "5240076",
+    companyUniversalName: "mygwork",
+    companyName: "myGwork - LGBTQ+ Business Community",
+    salaryInsights: "",
+    applicants: 1,
+    formattedLocation: "National, MD",
+    formattedEmploymentStatus: "Full-time",
+    formattedExperienceLevel: "Internship",
+    formattedIndustries: "Financial Services",
+    jobDescription: `This job is with Moody's, an inclusive employer and a member of myGwork – the largest global platform for the LGBTQ+ business community. Please do not contact the recruiter directly. Location(s): Remote - United States, US Line Of Business: Structured Finance OU(SF OU) Job Category Students & Early Careers Experience Level: Early Career At Moody's, we unite the brightest minds to turn today’s risks into tomorrow’s opportunities. We do this by striving to create an inclusive environment where everyone feels welcome to be who they are-with the freedom to exchange ideas, think innovatively, and listen to each other and customers in meaningful ways. If you are excited about this opportunity but do not meet every single requirement, please apply! You still may be a great fit for this role or other open roles. We are seeking candidates who model our values: invest in every relationship, lead with curiosity, champion diverse perspectives, turn inputs into actions, and uphold trust through integrity. 
+
+Skills And Competencies Required Skills and Experience: 
+- Experience writing code in C#, VBA 
+- Good programming and debugging skills using Visual Studio 
+- Excellent problem-solving abilities and attention to detail 
+- Willingness to learn new things and passion to solve difficult technical problems 
+- Interest in cloud-native development (AWS) 
+
+Preferred Skills And Experience 
+- Experience building software in an academic or industry setting 
+- Experience with modeling or simulations a plus 
+- Skills in analytic computing and algorithms 
+- Knowledge of programming concepts such as multi-threading, memory management, and query processing 
+- Familiarity with statistics, numerical computing 
+
+Education 
+- Currently pursuing a degree in Computer Science, IT, Software Engineering 
+- Graduation date of June 2026 - June 2027 
+- Ability to work during program dates: June 2nd - August 8th 2025 
+
+Responsibilities 
+- For C# .Net focus will be on assisting in development of WinForms application and API’s 
+- For COM API assist in development of VBA scripts 
+- Tasks will include refactoring, documentation, testing and adding more automation for testing 
+- Focus on exploring new development technologies 
+
+About The Program 
+Moody's Analytics provides advanced data and analytics services focused on risk management to the financial markets. We have development teams in New York, San Francisco, London and Prague. Our New York teams are focused in developing and delivering various applications to our clients and incorporate a variety of technology stacks including C# .Net, microservices, cloud and REST API. 
+
+Moody's 10-week summer internship program is a premier opportunity for students to immerse themselves in a hands-on learning experience, guided by Moody's commitment to integrity, excellence, and insight. The program takes place each summer from June - August and positions are available for undergraduate and select graduate students. Internships are full-time, offering a comprehensive view of Moody's business and culture, and a chance to build professional and technical skills. Programmatic elements include networking, mentorship, leadership speaker series and volunteering events. Interns complete project work determined by their team that have real impact, fostering a sense of accomplishment and professional growth. 
+
+Throughout the internship, participants receive mentorship from Moody's professionals, gaining insights into diverse career paths and cultivate a comprehensive understanding of the company. Networking events and workshops further enrich the experience, providing a platform for professional development and collaboration. As a Moody's intern, you will gain real-world experience, turn inputs into actions, and be an integral part of the team. 
+
+For US-based roles only: the anticipated hiring hourly range for this position is $35. Moody’s is an equal opportunity employer. All qualified applicants will receive consideration for employment without regard to race, color, sex, gender, age, religion, national origin, citizen status, marital status, physical or mental disability, military or veteran status, sexual orientation, gender identity, gender expression, genetic information, or any other characteristic protected by law. Moody’s also provides reasonable accommodation to qualified individuals with disabilities or based on a sincerely held religious belief in accordance with applicable laws. If you need to inquire about a reasonable accommodation, or need assistance with completing the application process, please email accommodations@moodys.com. This contact information is for accommodation requests only and cannot be used to inquire about the status of applications. 
+
+For San Francisco positions, qualified applicants with criminal histories will be considered for employment consistent with the requirements of the San Francisco Fair Chance Ordinance. This position may be considered a promotional opportunity, pursuant to the Colorado Equal Pay for Equal Work Act. Click here to view our full EEO policy statement. Click here for more information on your EEO rights under the law. Click here to view our Pay Transparency Nondiscrimination statement. Click here to view our Notice to New York City Applicants. Candidates for Moody's Corporation may be asked to disclose securities holdings pursuant to Moody’s Policy for Securities Trading and the requirements of the position. Employment is contingent upon compliance with the Policy, including remediation of positions in those holdings as necessary. For more information on the Securities Trading Program, please refer to the STP Quick Reference guide on ComplianceNet. Please note: STP categories are assigned by the hiring teams and are subject to change over the course of an employee’s tenure with Moody’s.`,
+    inferredBenefits: "",
+    jobFunctions: "ENG, IT",
+    workplaceTypes: "",
+    company_data: {},
+    companyApplyUrl:
+      "https://mygwork.com/jobs/moody%27s-software-developer-internship?src=linkedin",
+    jobPostingUrl:
+      "https://www.linkedin.com/jobs/view/4075324305/?trk=jobs_biz_prem_srch",
+    listedAt: "2024-11-15T06:50:36.000Z",
+  },
+];
+
+export { samplejobsData, linkedSampleData };

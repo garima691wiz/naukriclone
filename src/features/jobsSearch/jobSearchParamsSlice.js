@@ -1,26 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  queryString: "software developer",
-  location: "India",
-  numPages: 5,
-  datePosted: "all",
-  type: "FULLTIME",
+  query: "software developer",
   page: 1,
-  experience: null,
-  radius: null,
+  experience: null, // Experience level (e.g., "2" for Entry level)
+  jobType: null, // Job type (e.g., "F,P" for Full-time and Part-time)
+  sortBy: "DD", // Sort order: "DD" (most recent) or "R" (most relevant)
 };
 
 const searchParamsSlice = createSlice({
   name: "searchParams",
   initialState,
   reducers: {
-    setSearchParams: function (state, action) {
+    setSearchParams: (state, action) => {
       console.log({ ...state, ...action.payload });
       return { ...state, ...action.payload };
     },
-
-    resetSearchParams: function () {
+    resetSearchParams: () => {
       return { ...initialState };
     },
   },

@@ -3,41 +3,36 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://jsearch.p.rapidapi.com/",
+    baseUrl: "https://linkedin-data-scraper.p.rapidapi.com/",
     prepareHeaders: (headers) => {
       headers.set("x-rapidapi-key", import.meta.env.VITE_RAPIDAPI_KEY);
-      headers.set("x-rapidapi-host", "jsearch.p.rapidapi.com");
+      headers.set("x-rapidapi-host", "linkedin-data-scraper.p.rapidapi.com");
       return headers;
     },
   }),
   endpoints(builder) {
     return {
       fetchJobs: builder.query({
-        query({
-          numPages = 5,
-          queryString = "software developer",
-          location = "India",
-          datePosted = "all",
-          type = "FULLTIME,CONTRACTOR,PARTTIME,INTERN",
+        query(
+          query = "software developer",
           page = 1,
           experience = null,
-          radius = null,
-        } = {}) {
+          jobType = null,
+          sortBy = "DD",
+        ) {
           // Define query parameters in an object
           const params = new URLSearchParams({
-            query: queryString + " in " + location,
+            query,
             page: page.toString(),
-            num_pages: numPages.toString(),
-            date_posted: datePosted,
-            employment_types: type,
+            sortBy, // Either "DD" (most recent) or "R" (most relevant)
           });
 
           // Conditionally add optional parameters
-          if (experience) params.append("job_requirements", experience);
-          if (radius) params.append("radius", radius.toString());
+          if (experience) params.append("experience", experience);
+          if (jobType) params.append("jobType", jobType);
 
           // Construct and return the full URL
-          return `/search?${params.toString()}`;
+          return `/search_jobs?${params.toString()}`;
         },
       }),
     };

@@ -10,18 +10,13 @@ import { FaRegBookmark } from "react-icons/fa6";
 
 const JobCard = ({ jobData }) => {
   const {
-    job_id,
-    job_title,
-    employer_name,
-    job_posted_at_datetime_utc,
-    job_city,
-    job_state,
-    job_country,
-    job_description,
-    job_is_remote,
-  } = jobData;
-
-  const postedDate = new Date(job_posted_at_datetime_utc).toLocaleDateString();
+    title,
+    companyName,
+    formattedLocation,
+    jobDescription,
+    workplaceTypes,
+    listedAt,
+  } = jobData || {};
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,7 +24,7 @@ const JobCard = ({ jobData }) => {
 
   // SAVING JOB FUNCTIONALITY
   const savedJobs = useSelector((state) => state.savedJobs.savedJobs || []);
-  const isSaved = savedJobs.some((job) => job.job_id === job_id);
+  const isSaved = savedJobs.some((job) => jobData.title === job.title);
 
   const handleToggleSaveJob = function () {
     if (!loggedIn) {
@@ -46,10 +41,12 @@ const JobCard = ({ jobData }) => {
         <div>
           {/* Title and Save Button */}
           <div className="flex items-start justify-between">
-            <Link className="block" to={`/jobs/${job_id}`} state={{ jobData }}>
-              <h2 className="text-lg font-semibold text-gray-800">
-                {job_title}
-              </h2>
+            <Link
+              className="block"
+              to={`/jobs/${encodeURIComponent(title)}`}
+              state={{ jobData }}
+            >
+              <h2 className="text-lg font-semibold text-gray-800">{title}</h2>
             </Link>
             <button
               onClick={handleToggleSaveJob}
@@ -64,8 +61,12 @@ const JobCard = ({ jobData }) => {
           </div>
 
           {/* Employer Name */}
-          <Link className="block" to={`/jobs/${job_id}`} state={{ jobData }}>
-            <p className="text-sm font-semibold">{employer_name}</p>
+          <Link
+            className="block"
+            to={`/jobs/${encodeURIComponent(title)}`}
+            state={{ jobData }}
+          >
+            <p className="text-sm font-semibold">{companyName}</p>
           </Link>
         </div>
 
@@ -74,23 +75,27 @@ const JobCard = ({ jobData }) => {
           <div className="flex items-center">
             <CiLocationOn className="mr-1 text-lg" />
             <span>
-              {job_is_remote
+              {workplaceTypes && workplaceTypes.includes("Remote")
                 ? "Remote"
-                : `${job_city}, ${job_state}, ${job_country}`}
+                : formattedLocation}
             </span>
           </div>
           <div className="h-4 self-baseline border-[1px]"></div>
           <div className="flex items-center">
             <CiCalendarDate className="mr-1 text-lg" />
-            <span> {postedDate}</span>
+            <span> {new Date(listedAt).toLocaleDateString()}</span>
           </div>
         </div>
 
         {/* Job Description */}
-        <Link className="block" to={`/jobs/${job_id}`} state={{ jobData }}>
+        <Link
+          className="block"
+          to={`/jobs/${encodeURIComponent(title)}`}
+          state={{ jobData }}
+        >
           <p className="mt-2text-sm text-gray-600">
             <TbListDetails className="mr-2 inline" />
-            {job_description.slice(0, 150)}...
+            {jobDescription?.slice(0, 150)}...
           </p>
         </Link>
       </div>

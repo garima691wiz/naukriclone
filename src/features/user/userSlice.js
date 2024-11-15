@@ -4,6 +4,8 @@ import auth, { db } from "../../firebase/firebase";
 import { Store } from "../../app/store";
 import { doc, getDoc } from "firebase/firestore";
 import userInitialState from "../../utils/constants/userInitialState";
+import { clearAppliedJobs } from "../appliedJobs/appliedJobsSlice";
+import { clearSavedJobs } from "../savedjobs/savedJobsSlice";
 
 const userSlice = createSlice({
   name: "user",
@@ -39,5 +41,9 @@ onAuthStateChanged(auth, async (user) => {
     }
   } else {
     Store.dispatch(setUser(userInitialState));
+    Store.dispatch(clearAppliedJobs());
+    Store.dispatch(clearSavedJobs());
+    localStorage.removeItem("appliedJobs");
+    localStorage.removeItem("savedJobs");
   }
 });

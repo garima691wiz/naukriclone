@@ -29,7 +29,7 @@ const savedJobSlice = createSlice({
     toggleSavedJob(state, action) {
       const job = action.payload;
       const existingJobIndex = state.savedJobs.findIndex(
-        (savedJob) => savedJob.job_id === job.job_id,
+        (savedJob) => savedJob.title === job.title,
       );
 
       if (existingJobIndex === -1) {
