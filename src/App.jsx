@@ -1,13 +1,12 @@
-// import { Suspense } from "react";
-// import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import Wrapper from "./components/layout/Wrapper";
-import Loader from "./components/ui/Loader";
-import Protected from "./components/auth/Protected";
 import SomethingWentWrong from "./pages/SomethingWentWrong";
-import PageNotFound from "./pages/PageNotFound";
+
+const Wrapper = lazy(() => import("./components/layout/Wrapper"));
+const Loader = lazy(() => import("./components/ui/Loader"));
+const Protected = lazy(() => import("./components/auth/Protected"));
+const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const JobsPage = lazy(() => import("./pages/JobsPage"));
