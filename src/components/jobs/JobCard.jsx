@@ -2,11 +2,13 @@
 import { CiLocationOn } from "react-icons/ci";
 import { CiCalendarDate } from "react-icons/ci";
 import { TbListDetails } from "react-icons/tb";
-import { CiBookmark } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleSavedJob } from "../../features/savedjobs/savedJobsSlice";
+import { FaBookmark } from "react-icons/fa6";
+import { FaRegBookmark } from "react-icons/fa6";
 
 const JobCard = ({ jobData }) => {
-  console.log(jobData);
   const {
     job_id,
     job_title,
@@ -21,24 +23,48 @@ const JobCard = ({ jobData }) => {
 
   const postedDate = new Date(job_posted_at_datetime_utc).toLocaleDateString();
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const loggedIn = useSelector((state) => state.user.isLoggedIn);
+
+  // SAVING JOB FUNCTIONALITY
+  const savedJobs = useSelector((state) => state.savedJobs.savedJobs || []);
+  const isSaved = savedJobs.some((job) => job.job_id === job_id);
+
+  const handleToggleSaveJob = function () {
+    if (!loggedIn) {
+      alert("You need to login to save jobs.");
+      navigate("/auth/login");
+      return;
+    }
+    dispatch(toggleSavedJob(jobData));
+  };
+
   return (
     <div className="mx-auto max-w-2xl rounded-lg bg-white p-4 shadow-lg transition-shadow duration-300 ease-in-out hover:shadow-xl">
       <div className="flex flex-col space-y-3">
         <div>
           {/* Title and Save Button */}
           <div className="flex items-start justify-between">
-            <Link className="block" to={`/jobs/${job_id}`}>
+            <Link className="block" to={`/jobs/${job_id}`} state={{ jobData }}>
               <h2 className="text-lg font-semibold text-gray-800">
                 {job_title}
               </h2>
             </Link>
-            <button className="text-gray-500 hover:text-blue-500">
-              <CiBookmark size={24} />
+            <button
+              onClick={handleToggleSaveJob}
+              className="text-gray-500 hover:text-blue-500"
+            >
+              {isSaved ? (
+                <FaBookmark size={24} className="text-blue-500" />
+              ) : (
+                <FaRegBookmark size={24} />
+              )}
             </button>
           </div>
 
           {/* Employer Name */}
-          <Link className="block" to={`/jobs/${job_id}`}>
+          <Link className="block" to={`/jobs/${job_id}`} state={{ jobData }}>
             <p className="text-sm font-semibold">{employer_name}</p>
           </Link>
         </div>
@@ -61,7 +87,7 @@ const JobCard = ({ jobData }) => {
         </div>
 
         {/* Job Description */}
-        <Link className="block" to={`/jobs/${job_id}`}>
+        <Link className="block" to={`/jobs/${job_id}`} state={{ jobData }}>
           <p className="mt-2text-sm text-gray-600">
             <TbListDetails className="mr-2 inline" />
             {job_description.slice(0, 150)}...

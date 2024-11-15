@@ -1,22 +1,25 @@
-import { useParams } from "react-router-dom";
-import { samplejobsData } from "../utils/sampledata";
-import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+// import { samplejobsData } from "../utils/sampledata";
+// import { useEffect, useState } from "react";
 import JobDetailsTitleCard from "../components/jobs/jobDetailsTitleCard";
 import JobDetailsDescreptionCard from "../components/jobs/JobDetailsDescreptionCard";
 import NaukariFastForward from "../components/jobs/NaukariFastForward";
 import BeAware from "../components/jobs/BeAware";
 
 function JobDetailsPage() {
-  const { jobId } = useParams();
-  const [curJob, setCurJob] = useState({});
+  // const { jobId } = useParams();
+  // const [curJob, setCurJob] = useState({});
 
-  useEffect(() => {
-    const job = samplejobsData.data.find((job) => job.job_id === jobId);
-    setCurJob(job);
-  }, [jobId]);
+  const location = useLocation();
+  const { jobData: curJob } = location.state || {};
+
+  // useEffect(() => {
+  //   const job = samplejobsData.data.find((job) => job.job_id === jobId);
+  //   setCurJob(job);
+  // }, [jobId]);
 
   console.log(JSON.stringify(curJob));
-  console.log(jobId);
+  // console.log(jobId);
 
   return (
     <div className="mt-12 flex justify-center gap-6">

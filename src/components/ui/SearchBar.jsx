@@ -1,19 +1,40 @@
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import { useDispatch } from "react-redux";
+import { setSearchParams } from "../../features/jobsSearch/jobSearchParamsSlice";
 
 function SearchBar({ type = "home" }) {
   // search bar for the jobs page
+  const [searchedQuery, setSearchedQuery] = useState("");
+  const dispatch = useDispatch();
+
+  function handleInputChange(e) {
+    setSearchedQuery(e.target.value);
+  }
+
+  function handlesubmit(e) {
+    e.preventDefault();
+    console.log(searchedQuery);
+    dispatch(setSearchParams({ queryString: searchedQuery }));
+  }
+
   if (type === "jobs")
     return (
-      <div className="mx-auto mb-6 flex max-w-lg rounded-full shadow-md">
+      <form
+        onSubmit={handlesubmit}
+        className="mx-auto mb-6 flex w-full max-w-2xl rounded-full shadow-md"
+      >
         <input
           type="text"
           placeholder="Enter skills / role"
           className="w-full rounded-full px-3 text-gray-600 placeholder-gray-400 focus:outline-none"
+          onChange={handleInputChange}
         />
         <button className="rounded-full bg-blue-600 px-6 py-2 text-white">
           <FiSearch />
         </button>
-      </div>
+      </form>
     );
   // default search bar for the home page
   return (

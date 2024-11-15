@@ -1,10 +1,40 @@
 /* eslint-disable react/prop-types */
 import { CiCalendarDate, CiLocationOn } from "react-icons/ci";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { toggleSavedJob } from "../../features/savedjobs/savedJobsSlice";
+import { applyJob } from "../../features/appliedJobs/appliedJobsSlice";
 
 function JobDetailsTitleCard({ curJob = {} }) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const loggedIn = useSelector((state) => state.user.isLoggedIn);
+
+  // SAVING JOB FUNCTIONALITY
+  const savedJobs = useSelector((state) => state.savedJobs.savedJobs || []);
+  const isSaved = savedJobs.some((job) => job.job_id === curJob.job_id);
+
+  const handleToggleSaveJob = function () {
+    if (!loggedIn) {
+      alert("You need to login to save jobs.");
+      navigate("/auth/login");
+      return;
+    }
+    dispatch(toggleSavedJob(curJob));
+  };
+
+  // APPLYING JOBS FUNCTIONSLITY
+  const appliedJobs = useSelector((state) => state.appliedJobs.appliedJobs);
+  const isApplied = appliedJobs.some((job) => job.job_id === curJob.job_id);
+
+  function handleApply() {
+    if (!loggedIn) {
+      alert("You need to login to apply for this jobs.");
+      navigate("/auth/login");
+      return;
+    }
+    dispatch(applyJob(curJob));
+  }
 
   const {
     // job_id,
@@ -52,17 +82,24 @@ function JobDetailsTitleCard({ curJob = {} }) {
         <div className="flex gap-2 self-end">
           {loggedIn ? (
             <>
-              <button className="rounded-full border border-blue-600 px-4 py-1 font-semibold text-blue-600 transition-all duration-200 hover:bg-blue-100 active:scale-95">
-                Save
+              <button
+                className="rounded-full border border-blue-600 px-4 py-1 font-semibold text-blue-600 transition-all duration-200 hover:bg-blue-100 active:scale-95"
+                onClick={handleToggleSaveJob}
+              >
+                {isSaved ? "Unsave" : "Save"}
               </button>
-              <button className="rounded-full border border-blue-600 bg-blue-500 px-4 py-1 font-semibold text-white transition-all duration-200 hover:bg-blue-400 active:scale-95">
-                Apply
+              <button
+                disabled={isApplied}
+                className="rounded-full border border-blue-600 bg-blue-500 px-4 py-1 font-semibold text-white transition-all duration-200 hover:bg-blue-400 active:scale-95 disabled:cursor-not-allowed disabled:opacity-70"
+                onClick={handleApply}
+              >
+                {isApplied ? "Applied" : "Apply"}
               </button>
             </>
           ) : (
             <Link
               className="rounded-full border border-blue-600 px-4 py-1 font-semibold text-blue-600 transition-all duration-200 hover:bg-blue-100 active:scale-95"
-              to={`/login`}
+              to={`/auth/login`}
             >
               Login To Apply
             </Link>

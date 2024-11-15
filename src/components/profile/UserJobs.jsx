@@ -1,17 +1,26 @@
-import { useState } from "react";
-import { samplejobsData } from "../../utils/sampledata";
+import { useEffect, useState } from "react";
+// import { samplejobsData } from "../../utils/sampledata";
 import JobCard from "../jobs/JobCard";
+import { useSelector } from "react-redux";
 
 function UserJobs() {
   const [category, setCategory] = useState("savedJobs");
-  // placeholder data change it accordingly
-  const [curJobs] = useState(samplejobsData);
+  const [curJobs, setCurJob] = useState([]);
+  const savedJobs = useSelector((state) => state.savedJobs.savedJobs || []);
+  const appliedJobs = useSelector(
+    (state) => state.appliedJobs.appliedJobs || [],
+  );
+
+  useEffect(() => {
+    if (category === "savedJobs") {
+      setCurJob(savedJobs);
+    } else {
+      setCurJob(appliedJobs);
+    }
+  }, [category]);
 
   function handleSelect(e) {
     setCategory(e.target.value);
-    console.log(e.target.value);
-    // update jobs based on category selection
-    // change curJobs state accordingly
   }
 
   return (
@@ -20,7 +29,7 @@ function UserJobs() {
         <select
           name="category Select"
           id=""
-          className="mb-6 w-full max-w-2xl p-2 text-center font-semibold outline-none"
+          className="mb-6 w-full min-w-[350px] max-w-2xl p-2 text-center font-semibold outline-none"
           value={category}
           onChange={handleSelect}
         >
@@ -29,10 +38,17 @@ function UserJobs() {
         </select>
       </div>
       <div className="space-y-6">
-        {/* <Loader /> */}
-        {curJobs?.data.map((jobData, index) => (
-          <JobCard key={index} jobData={jobData} />
-        ))}
+        {curJobs.length === 0 ? (
+          <div className="mx-auto max-w-2xl rounded-lg bg-white p-4 shadow-lg transition-shadow duration-300 ease-in-out hover:shadow-xl">
+            <p className="text-center text-sm text-gray-500">
+              No jobs found for selected category.
+            </p>
+          </div>
+        ) : (
+          curJobs.map((jobData) => (
+            <JobCard key={jobData.id || jobData.title} jobData={jobData} />
+          ))
+        )}
       </div>
     </div>
   );

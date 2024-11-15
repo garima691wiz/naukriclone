@@ -3,7 +3,7 @@ import UserJobs from "../components/profile/userJobs";
 
 function ProfilePage() {
   return (
-    <div className="relative mt-12 flex w-full flex-wrap justify-center gap-8 px-2">
+    <div className="relative mt-12 flex w-full flex-wrap justify-center gap-8 px-4">
       <div className="sticky top-36 hidden lg:block">
         <div className="sticky top-36">
           <ProfileCard />
