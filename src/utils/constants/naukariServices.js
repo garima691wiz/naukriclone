@@ -6,7 +6,7 @@ const naukariServices = [
       "Get a Featured Profile, Stand out and get noticed in recruiter eyes.",
     price: "₹890",
     duration: "1 Month",
-    image: "/images/naukariServices/resumeDisplay.png",
+    image: "./images/naukariServices/resumeDisplay.png",
   },
   {
     title: "Priority Applicant",
@@ -15,7 +15,7 @@ const naukariServices = [
     description: "Be the first one to apply and catch recruiter attention.",
     price: "₹971",
     duration: "3 Months",
-    image: "/images/naukariServices/priorityApplicant.png",
+    image: "./images/naukariServices/priorityApplicant.png",
   },
   {
     title: "AI Mock Interview",
@@ -24,7 +24,7 @@ const naukariServices = [
       "Designed to streamline your interview preparation effortlessly. Try for free now!",
     price: "₹296",
     duration: "3 Months",
-    image: "/images/naukariServices/mockInterview.png",
+    image: "./images/naukariServices/mockInterview.png",
   },
   {
     title: "Jobs For You",
@@ -33,7 +33,7 @@ const naukariServices = [
       "Our experts will understand your job preference & set alerts. Instant job on SMS.",
     price: "₹1566",
     duration: "3 Months",
-    image: "/images/naukariServices/jobsForYou.png",
+    image: "./images/naukariServices/jobsForYou.png",
   },
   {
     title: "Recruiter Connection",
@@ -42,7 +42,7 @@ const naukariServices = [
       "Search from a database of 1.6 Lakh recruiters and share your Naukri profile.",
     price: "₹839",
     duration: "5 Credits",
-    image: "/images/naukariServices/recruiterConnect.png",
+    image: "./images/naukariServices/recruiterConnect.png",
   },
   {
     title: "Resume Critique",
@@ -51,7 +51,7 @@ const naukariServices = [
       "Our experts will analyze your resume and send a detailed report.",
     price: "₹1017",
     duration: "",
-    image: "/images/naukariServices/resumeCritique.png",
+    image: "./images/naukariServices/resumeCritique.png",
   },
 ];
 
