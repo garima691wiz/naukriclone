@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleSavedJob } from "../../features/savedjobs/savedJobsSlice";
 import { FaBookmark } from "react-icons/fa6";
 import { FaRegBookmark } from "react-icons/fa6";
+import { toast } from "react-toastify";
 
 const JobCard = ({ jobData }) => {
   const {
@@ -28,7 +29,7 @@ const JobCard = ({ jobData }) => {
 
   const handleToggleSaveJob = function () {
     if (!loggedIn) {
-      alert("You need to login to save jobs.");
+      toast.error("Please login first to save your jobs");
       navigate("/auth/login");
       return;
     }
